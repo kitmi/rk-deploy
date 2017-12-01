@@ -1,0 +1,22 @@
+{
+  "name": "rk-deploy",
+  "version": "1.0.0",
+  "description": "Remote deployment tool",
+  "main": "index.js",
+  "scripts": {
+    "bin-test": "node ./bin/rk-deploy.js --etcPath=./test",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "compare-versions": "^3.1.0",
+    "minimist": "^1.2.0",
+    "node-ssh": "^5.0.0",
+    "nodemiral": "^1.1.1",
+    "rk-config": "^1.0.0",
+    "rk-utils": "^1.0.1",
+    "winston": "^2.4.0",
+    "winstonflight": "^1.0.0"
+  }
+}

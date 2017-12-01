@@ -1,0 +1,63 @@
+{
+    "logger": {
+        "transports": [{
+            "type": "console",
+            "options": {
+                "level": "verbose",
+                "colorize": true
+            }
+        }, {
+            "type": "file",
+            "options": {
+                "level": "info",
+                "json": false,
+                "formatter": "#!es6:${options => options.message}",
+                "filename": "rk-deploy.log"
+            }
+        }]
+    },
+
+    "general": {
+        "reinstallExistingComponent": true
+    },
+
+    "nodes": {
+        "test-box": {
+            "host": "192.168.45.151",
+            "username": "test",
+            "password": "test"
+        }
+    },
+
+    "components": {
+        "mysql-by-docker": {
+            "mysql-one-box": {
+                "user": "root",
+                "rootPassword": "123456",
+                "charset": "utf8",
+                "collation": "utf8_general_ci",
+                "replication": false,
+                "startAfterInstall": true,
+                "imageName": "mysql:5.7",
+                "dataDir": "/data/mysql",
+                "dockerOptions": {
+                    "net": "host"
+                }
+            }
+        }
+    },
+
+    "deploy": {
+        "database": {
+            "targets": [ "test-box" ],
+            "setup": {
+                "timezone": "Australia/Sydney"
+            },
+            "components": [
+                { "name": "mysql-by-docker.mysql-one-box", "options": {} }
+            ]
+        }
+
+
+    }
+}
